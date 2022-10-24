@@ -1,0 +1,19 @@
+[
+  
+    {
+      "title"    : "Age- Gender Estimation Demo",
+      "category" : "",
+      "tags"     : "python, mxnet",
+      "url"      : "/blog/age-gender-estimation-demo",
+      "date"     : "2020-06-07 13:25:00 +0300"
+    } ,
+  
+    {
+      "title"    : "Sending E-mails with Python",
+      "category" : "",
+      "tags"     : "python",
+      "url"      : "/blog/sending-emails-with-python",
+      "date"     : "2020-06-07 13:25:00 +0300"
+    } 
+  
+]

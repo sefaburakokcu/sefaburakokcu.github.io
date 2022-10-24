@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sending E-mails with Python">
+  <meta property="og:description" content="Hi, I'm Sefa Burak OKCU.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/sefaburakokcu/sefaburakokcu.github.io/master/assets/img/sample/avatar.jpeg">
+
+  <title>Sending E-mails with Python</title>
+  <meta name="description" content="Hi, I'm Sefa Burak OKCU.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Sefa Burak OKCU</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Sending E-mails with Python</b></h1>
+
+<p class="post-metadata text-muted">
+  07 June 2020 -  
+  <b>6 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#python">
+      <span class="tag badge badge-pill text-primary border border-primary">python</span>
+    </a>
+    </p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Python has several libraries that enable us to design extraordinary projects without too much effort. “email” and “smtplib” are two of them. In this post, I will share my solution for sending e-mails using Python 3.7.</p>
+
+<p>In my work, I am training different Deep Learning networks and training sometimes takes several days. When I am away from the work, I want to be informed about the training process. Therefore, 
+I created this project in order to get accuracy, loss values and output plots. In the next part, I will share the source code for the project and then I will show how to use it in your code with an example.</p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>The project has EmailSender class that supports sending text, images and documents such as pdf and word on e-mail. The source code can be found below and at <a href="https://github.com/sefaburakokcu/python-email-sender">github</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">smtplib</span>
+
+<span class="kn">from</span> <span class="nn">email.mime.multipart</span> <span class="kn">import</span> <span class="n">MIMEMultipart</span>
+<span class="kn">from</span> <span class="nn">email.mime.text</span> <span class="kn">import</span> <span class="n">MIMEText</span>
+<span class="kn">from</span> <span class="nn">email.mime.image</span> <span class="kn">import</span> <span class="n">MIMEImage</span>
+<span class="kn">from</span> <span class="nn">email.mime.application</span> <span class="kn">import</span> <span class="n">MIMEApplication</span>
+
+
+<span class="k">class</span> <span class="nc">EmailSender</span><span class="p">():</span>
+    <span class="s">""" 
+    This is a class for automatic e-mail sending. 
+      
+    Parameters
+    ----------
+    user_email : str
+        The user(sender) e-mail adress.
+    password : str
+        The user(sender)'s pasword for e-mail authentication.
+        
+    """</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_email</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="s">"""
+        The constructor for EmailSender class.
+        Parameters
+        ----------
+        user_email : str
+            The user(sender) e-mail adress.
+        password : str
+            The user(sender)'s pasword for e-mail authentication.
+        Returns
+        -------
+        None.
+        """</span>
+
+        <span class="bp">self</span><span class="p">.</span><span class="n">sender_email</span> <span class="o">=</span> <span class="n">user_email</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">__password</span> <span class="o">=</span> <span class="n">password</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">server_address</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_email_server</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">get_email_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s">"""
+        The function to obtain e-mail server's address.
+        Returns
+        -------
+        server_address : str
+            The e-mail provider's server address.
+        """</span>
+        <span class="n">provider</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sender_email</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"@"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]).</span><span class="n">split</span><span class="p">(</span><span class="s">"."</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">if</span> <span class="n">provider</span> <span class="o">==</span> <span class="s">"outlook"</span><span class="p">:</span>
+            <span class="n">server_address</span> <span class="o">=</span> <span class="s">"smtp-mail.outlook.com"</span>
+        <span class="k">elif</span> <span class="n">provider</span> <span class="o">==</span> <span class="s">"gmail"</span><span class="p">:</span>
+            <span class="n">server_address</span> <span class="o">=</span> <span class="s">"smtp.gmail.com"</span>
+        <span class="k">elif</span> <span class="n">provider</span> <span class="o">==</span> <span class="s">"yahoo"</span><span class="p">:</span>
+            <span class="n">server_address</span> <span class="o">=</span> <span class="s">"smtp.mail.yahoo.com"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"%s is not supported. Please use outlook, gmail or yahoo e-mail."</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">server_address</span>
+                
+        
+    <span class="k">def</span> <span class="nf">get_msg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">receiver_email</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s">""</span><span class="p">,</span> <span class="n">message_body</span><span class="o">=</span><span class="s">""</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="s">"""
+        The funtion to prepare e-mail messages.
+        Parameters
+        ----------
+        receiver_email : str
+            The e-mail address of receiver.
+        subject : str, optional
+            The e-mail subject. The default is "".
+        message_body : str, optional
+            The body of e-mail message. The default is "".
+        attachments : list, optional
+            The attachment files. The default is [].
+        Returns
+        -------
+        msg : MIMEMultipart object
+            The e-mail message that will be sent.
+        """</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">MIMEMultipart</span><span class="p">()</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s">"From"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">sender_email</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s">"To"</span><span class="p">]</span> <span class="o">=</span> <span class="n">receiver_email</span>
+        <span class="n">msg</span><span class="p">[</span><span class="s">"Subject"</span><span class="p">]</span> <span class="o">=</span> <span class="n">subject</span>
+        
+        <span class="n">msg</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEText</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="s">"plain"</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">attachments</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">image_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">"jpg"</span><span class="p">,</span><span class="s">"png"</span><span class="p">,</span><span class="s">"jpeg"</span><span class="p">,</span><span class="s">"JPG"</span><span class="p">]</span>
+            <span class="n">doc_extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s">"doc"</span><span class="p">,</span><span class="s">"docx"</span><span class="p">,</span><span class="s">"odt"</span><span class="p">,</span><span class="s">"pdf"</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">attachment</span> <span class="ow">in</span> <span class="n">attachments</span><span class="p">:</span>
+                <span class="n">ext</span> <span class="o">=</span> <span class="n">attachment</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">"."</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">image_extensions</span><span class="p">:</span>
+                    <span class="n">image_data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">attachment</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">msg</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="n">MIMEImage</span><span class="p">(</span><span class="n">image_data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">attachment</span><span class="p">)))</span>
+                <span class="k">elif</span> <span class="n">ext</span> <span class="ow">in</span> <span class="n">doc_extensions</span><span class="p">:</span>    
+                     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">attachment</span><span class="p">,</span> <span class="s">'rb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                         <span class="nb">file</span> <span class="o">=</span> <span class="n">MIMEApplication</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">read</span><span class="p">(),</span><span class="n">name</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">attachment</span><span class="p">))</span>
+                     <span class="nb">file</span><span class="p">[</span><span class="s">'Content-Disposition'</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'attachment; filename="</span><span class="si">{</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">attachment</span><span class="p">)</span><span class="si">}</span><span class="s">"'</span>
+                     <span class="n">msg</span><span class="p">.</span><span class="n">attach</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">print</span><span class="p">(</span><span class="s">"Sending %s file is not supported! Please use files with one of the extension in %s."</span> <span class="o">%</span><span class="p">(</span><span class="n">ext</span><span class="p">,(</span><span class="n">image_extensions</span><span class="o">+</span><span class="n">doc_extensions</span><span class="p">)))</span>
+                    
+        <span class="k">return</span> <span class="n">msg</span>
+    
+    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">receiver_email</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="s">""</span><span class="p">,</span> <span class="n">message_body</span><span class="o">=</span><span class="s">""</span><span class="p">,</span> <span class="n">attachments</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="s">"""
+        The function to send an e-mail message
+        Parameters
+        ----------
+        receiver_email : str
+            The e-mail address of receiver.
+        subject : str, optional
+            The e-mail subject. The default is "".
+        message_body : str, optional
+            The body of e-mail message. The default is "".
+        attachments : list, optional
+            The attachment files. The default is [].
+        Returns
+        -------
+        None.
+        """</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get_msg</span><span class="p">(</span><span class="n">receiver_email</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">message_body</span><span class="p">,</span> <span class="n">attachments</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">as_string</span><span class="p">()</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">server</span> <span class="o">=</span> <span class="n">smtplib</span><span class="p">.</span><span class="n">SMTP_SSL</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">server_address</span><span class="p">,</span><span class="mi">465</span><span class="p">)</span>
+            <span class="n">server</span><span class="p">.</span><span class="n">ehlo</span><span class="p">()</span>
+            <span class="n">server</span><span class="p">.</span><span class="n">login</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sender_email</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">__password</span><span class="p">)</span>
+            <span class="n">server</span><span class="p">.</span><span class="n">sendmail</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">sender_email</span><span class="p">,</span> <span class="n">receiver_email</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+            <span class="n">server</span><span class="p">.</span><span class="n">quit</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Email is sent successfully."</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"An error occured."</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="usage">Usage</h2>
+
+<p>In order to send an e-mail, first creat email_sender instance from EmailSender object by passing your e-mail address and password. In addition, if you are using your gmail account, you need to turn <a href="https://myaccount.google.com/lesssecureapps">less secure apps</a> on. Later, pass the receiver email address, the subject and the body text of the e-mail and attachments to send_email method. When the e-mail is sent successfully, it wil print “Email is sent successfully.” message on terminal.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">email_sender</span> <span class="kn">import</span> <span class="n">EmailSender</span>
+<span class="n">receiver_email</span> <span class="o">=</span> <span class="s">"jane.doe@example.com"</span>
+<span class="n">subject</span> <span class="o">=</span> <span class="s">"The first e-mail"</span>
+<span class="n">message_body</span> <span class="o">=</span> <span class="s">"This is a body of the message."</span>
+<span class="n">attachments</span> <span class="o">=</span> <span class="p">[</span><span class="s">"image.png"</span><span class="p">,</span> <span class="s">"output.pdf"</span><span class="p">]</span>
+
+<span class="n">email_sender</span> <span class="o">=</span> <span class="n">EmailSender</span><span class="p">(</span><span class="s">"john.doe@example.com"</span><span class="p">,</span> <span class="s">"Pswrd!0001"</span><span class="p">)</span>
+<span class="n">email_sender</span><span class="p">.</span><span class="n">send_email</span><span class="p">(</span><span class="n">receiver_email</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">message_body</span><span class="p">,</span> <span class="n">attachments</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h2 id="sources">Sources</h2>
+
+<ul>
+  <li>https://towardsdatascience.com/automate-email-with-python-1e755d9c6276</li>
+  <li>https://medium.com/@bakiiii/automatic-e-mail-sending-with-python-eb41855119e1</li>
+  <li>https://realpython.com/python-send-email/</li>
+</ul>
+
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Sefa Burak OKCU</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:sefaburak.okcu@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/sefaburakokcu"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/sefaburakokcu"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.twitter.com/sefaburakokcu"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1da1f2'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>
