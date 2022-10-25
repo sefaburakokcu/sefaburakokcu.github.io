@@ -1,17 +1,37 @@
-- title: Student, Harvard CS
-  from: 2014
-  to: 2018
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-- title: Software Engineer, Google, UK
-  from: 2018
+- title: Software/Deep Learning Engineer, Aselsan Inc.
+  from: July, 2018
   to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  description: -Designing resource constraint high-performance Deep Learning algorithms for object detection, attribute analysis<br />
+               - Following state-of-the-art algorithms and publishing research papers and patents<br />
+               - Writing documents for products and software<br />
+               - Working on full ML pipeline(from preparing dataset to deploying/monitoring ML models)<br />
+               - Utilizing Elasticsearch, Kibana, Flask for deploying algorithms for production<br />
+               - Containerizing applications using Docker<br />
+
+- title: Graduate Student, Orta Dogu Teknik Universitesi(ODTU)
+  from: September, 2019
+  to: present
+  description: -Studying for a Master's Degree in Cognitive Science<br />
+               -Studying on Multi-task Learning(MTL) and Continual Learning(CL)
+
+- title: Student, Orta Dogu Teknik Universitesi(ODTU)
+  from: September, 2013
+  to: June, 2018
+  description: -Bachelor's Degree in Electrical and Electronics Engineering<br />
+               
+- title: Undergraduate Student Researcher, Orta Dogu Teknik Universitesi(ODTU)
+  from: March, 2016
+  to: March, 2018
+  description: -Automated Attendance System Using Face Recognition<br />
+               -Developed an automated attendance system by using face recognition using Tensorflow<br />
+               -Deep Learning based algorithms for face recognition<br />
+               -Applied different data augmentations for imitating real-life scenes<br />
+               -Developed a software product for users such as professors<br />
+
+- title: Engineering Intern, Aselsan Inc.
+  from: June, 2017
+  to: July, 2017
+  description: -Compared different Face Detection networks<br />
+               -Analyzed different datasets for Face Detection task<br />
+               -Tested different algorithms and presented to the team<br />
+               -Documented results and software
