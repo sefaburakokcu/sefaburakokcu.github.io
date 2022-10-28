@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : Sefa Burak OKCU
 description         : >-
-                      Hi, I'm Sefa Burak OKCU.
+                      Hi, I'm Sefa Burak OKCU, a Deep Learning engineer and an MSc student at Cognitive Science.
 baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : sefaburakokcu/sefaburakokcu.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : YoussefRaafatNasry/portfolYOU
