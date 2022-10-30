@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Optimization of Onnx Models for TensorRT Execution">
+  <meta property="og:description" content="Hi, I'm Sefa Burak OKCU, a Deep Learning engineer and an MSc student at Cognitive Science.">
+  <meta property="og:image" content="/assets/avatar.jpeg">
+
+  <title>Optimization of Onnx Models for TensorRT Execution</title>
+  <meta name="description" content="Hi, I'm Sefa Burak OKCU, a Deep Learning engineer and an MSc student at Cognitive Science.">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Sefa Burak OKCU</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/pages/publications">Publications</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1><b>Optimization of Onnx Models for TensorRT Execution</b></h1>
+
+<p class="post-metadata text-muted">
+  30 October 2022 -  
+  <b>2 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#python">
+      <span class="tag badge badge-pill text-primary border border-primary">python</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#tensorrt">
+      <span class="tag badge badge-pill text-primary border border-primary">tensorrt</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#trtexec">
+      <span class="tag badge badge-pill text-primary border border-primary">trtexec</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#onnx">
+      <span class="tag badge badge-pill text-primary border border-primary">onnx</span>
+    </a>
+    </p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>TensorRT is utilized for running deep learning models on Nvidia GPUs efficiently. TensorRT supports parsing Onnx and Caffe models. In addition to TensorRT, trtexec which is a tool for using TensorRT without any development environment provides serialized engines from Onnx, Caffe or UFF models and benchmarking of networks. Further information can be obtained on <a href="https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html">Tensorrt documentation</a>.</p>
+
+<p>In this post, optimization of Onnx models for TensorRT execution for faster inference and efficient memory usage will be investigated by using trtexec tool.</p>
+
+<p>Trtexec(also TensorRT) has different configuration options for building models(serializing) and running inference. Fistly, we will examine building options for efficient models.</p>
+
+<h2 id="build-options">Build Options</h2>
+
+<p><strong>A. TacticSource</strong></p>
+
+<p>It provides tactics for TensorRT for efficient inference. Nevertheless, it leads to incrase in GPU memory. Therefore, if you need smaller memory allocation, available tactic sources should be disabled. Available options:</p>
+<ul>
+  <li>CUBLAS</li>
+  <li>CUBLAS_LT</li>
+  <li>CUDNN</li>
+  <li>EDGE_MASK_CONVOLUTIONS</li>
+</ul>
+
+<p>Usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="nt">--saveEngine</span><span class="o">=</span>model.plan 
+<span class="nt">--tacticSources</span><span class="o">=</span>+CUBLAS,-CUBLAS_LT,-CUDNN,+EDGE_MASK_CONVOLUTIONS
+</code></pre></div></div>
+
+<p>+:enable selected tactics                                                                                         <br />
+-:disable selected tactics</p>
+
+<p><strong>B. fp16</strong></p>
+
+<p>It enables float16 support in addition to float32. Weights will be converted to fp16 if fp16 flag is enabled and layers are supported. It decreases size of serialized engine file and accelerates inference.</p>
+
+<p>Usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="nt">--saveEngine</span><span class="o">=</span>model.plan <span class="nt">--fp16</span>
+</code></pre></div></div>
+
+<p>There are many other available options i.e. int8, sparsity, maxBatch etc. Available options can be listed via</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--help</span>
+</code></pre></div></div>
+
+<h2 id="inference-options">Inference Options</h2>
+
+<p><strong>A. noDataTransfers</strong></p>
+
+<p>It disables DMA transfers to and from device and decreases GPU speed fluactuations.</p>
+
+<p>Usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="nt">--saveEngine</span><span class="o">=</span>model.plan <span class="nt">--noDataTransfers</span>
+</code></pre></div></div>
+
+<p><strong>B. useSpinWait</strong></p>
+
+<p>It decreases synchronization time and GPU speed fluactuations but increases CPU usage and power.</p>
+
+<p>Usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="nt">--saveEngine</span><span class="o">=</span>model.plan <span class="nt">--useSpinWait</span>
+</code></pre></div></div>
+
+<p><strong>C. streams</strong></p>
+
+<p>It instantiates N engines to use concurrently and increases throughput per seconds(tps). However, it increas a bit of GPU memory usage.</p>
+
+<p>Note: It should be set 1 which is default value if dynamic batch size is used in models.</p>
+
+<p>Usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="nt">--saveEngine</span><span class="o">=</span>model.plan <span class="nt">--streams</span><span class="o">=</span>2
+</code></pre></div></div>
+
+<p><strong>D. useCudaGraph</strong></p>
+
+<p>It enables CUDA graph to capture engine execution and then launches inference. It increases Gpu runtime speed greatly.</p>
+
+<p>Usage:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--onnx</span><span class="o">=</span>model.onnx <span class="nt">--saveEngine</span><span class="o">=</span>model.plan <span class="nt">--useCudaGraph</span>
+</code></pre></div></div>
+
+<p>There are many other available options i.e. threads, exposeDMA etc. Available options can be listed via</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>trtexec <span class="nt">--help</span>
+</code></pre></div></div>
+
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Sefa Burak OKCU</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="mailto:sefaburak.okcu@gmail.com"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#db4437'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fas fa-envelope fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.github.com/sefaburakokcu"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/sefaburakokcu"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.twitter.com/sefaburakokcu"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#1da1f2'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-twitter fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+
+</html>
