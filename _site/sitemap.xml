@@ -9,32 +9,42 @@
 
 <url>
   <loc>https://sefaburakokcu.github.io/</loc>
-  <lastmod>2022-10-28T10:04:22+00:00</lastmod>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://sefaburakokcu.github.io/projects/</loc>
-  <lastmod>2022-10-28T10:04:22+00:00</lastmod>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://sefaburakokcu.github.io/blog/</loc>
-  <lastmod>2022-10-28T10:04:22+00:00</lastmod>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://sefaburakokcu.github.io/pages/publications</loc>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://sefaburakokcu.github.io/about/</loc>
-  <lastmod>2022-10-28T10:04:22+00:00</lastmod>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://sefaburakokcu.github.io/blog/optimization-of-onnx-models-for-trt-execution</loc>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
   <loc>https://sefaburakokcu.github.io/blog/sending-emails-with-python</loc>
-  <lastmod>2022-10-28T10:04:22+00:00</lastmod>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://sefaburakokcu.github.io/blog/tags</loc>
-  <lastmod>2022-10-28T10:04:22+00:00</lastmod>
+  <lastmod>2022-10-30T11:30:58+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 
