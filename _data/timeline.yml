@@ -2,23 +2,26 @@
   from: July, 2018
   to: present
   description: -Designing resource constraint high-performance Deep Learning algorithms for object detection, attribute analysis<br />
-               - Following state-of-the-art algorithms and publishing research papers and patents<br />
-               - Writing documents for products and software<br />
-               - Working on full ML pipeline(from preparing dataset to deploying/monitoring ML models)<br />
-               - Utilizing Elasticsearch, Kibana, Flask for deploying algorithms for production<br />
-               - Containerizing applications using Docker<br />
+               -Following state-of-the-art algorithms and publishing research papers and patents<br />
+               -Writing documents for products and software<br />
+               -Working on full ML pipeline(from preparing dataset to deploying/monitoring ML models)<br />
+               -Utilizing Elasticsearch, Kibana, Flask for deploying algorithms for production<br />
+               -Containerizing applications using Docker<br />
+               
+- title: Master of Science in Cognitive Science, Orta Dogu Teknik Universitesi(ODTU)
+  from: September, 2020
+  to: January, 2023
+  description: -Studied on Multi-task Learning(MTL) and Continual Learning(CL)<br />
+               -Designed a MTL model for face detection and facial landmark extraction<br />
+               -Compared different CL methods for face analysis tasks such as age, gender, emotion, and face recognition<br /> 
+               -Thesis:"Brain-inspired learning for face analysis in artificial neural networks:A multitask and continual learning framework"<br />
 
-- title: Graduate Student, Orta Dogu Teknik Universitesi(ODTU)
-  from: September, 2019
-  to: present
-  description: -Studying for a Master's Degree in Cognitive Science<br />
-               -Studying on Multi-task Learning(MTL) and Continual Learning(CL)
-
-- title: Student, Orta Dogu Teknik Universitesi(ODTU)
+- title: Bachelor of Science in Electrical and Electronics Engineering, Orta Dogu Teknik Universitesi(ODTU)
   from: September, 2013
   to: June, 2018
-  description: -Bachelor's Degree in Electrical and Electronics Engineering<br />
-               
+  description: -Specialization Field-Control Area<br />
+               -Additional Courses- Data Structures, Intorduction to Comuter Networks<br />
+                              
 - title: Undergraduate Student Researcher, Orta Dogu Teknik Universitesi(ODTU)
   from: March, 2016
   to: March, 2018
