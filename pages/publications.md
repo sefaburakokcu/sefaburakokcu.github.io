@@ -22,3 +22,7 @@ weight: 3
 * An Adaptive Machine Learning System for Label Change(Pending), 2022
 * Suitable Face Selection Method for Face Recognition, 2020
 
+
+## **MS Thesis**
+
+* [Brain-inspired learning for face analysis in artificial neural networks: A multitask and continual learning framework](https://open.metu.edu.tr/handle/11511/102081), [ODTÜ](https://www.metu.edu.tr/), 2023
