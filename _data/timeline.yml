@@ -8,7 +8,7 @@
                -Utilizing Elasticsearch, Kibana, Flask for deploying algorithms for production<br />
                -Containerizing applications using Docker<br />
                
-- title: Master of Science in Cognitive Science, Orta Dogu Teknik Universitesi(ODTU)
+- title: Master of Science in Cognitive Science, Orta Doğu Teknik Üniversitesi(ODTÜ)
   from: September, 2020
   to: January, 2023
   description: -Studied on Multi-task Learning(MTL) and Continual Learning(CL)<br />
@@ -16,13 +16,13 @@
                -Compared different CL methods for face analysis tasks such as age, gender, emotion, and face recognition<br /> 
                -Thesis:"Brain-inspired learning for face analysis in artificial neural networks:A multitask and continual learning framework"<br />
 
-- title: Bachelor of Science in Electrical and Electronics Engineering, Orta Dogu Teknik Universitesi(ODTU)
+- title: Bachelor of Science in Electrical and Electronics Engineering, Orta Doğu Teknik Üniversitesi(ODTÜ)
   from: September, 2013
   to: June, 2018
   description: -Specialization Field-Control Area<br />
-               -Additional Courses- Data Structures, Intorduction to Comuter Networks<br />
+               -Additional Courses:Data Structures, Introduction to Computer Networks<br />
                               
-- title: Undergraduate Student Researcher, Orta Dogu Teknik Universitesi(ODTU)
+- title: Undergraduate Student Researcher, Orta Doğu Teknik Üniversitesi(ODTÜ)
   from: March, 2016
   to: March, 2018
   description: -Automated Attendance System Using Face Recognition<br />
@@ -34,7 +34,7 @@
 - title: Engineering Intern, Aselsan Inc.
   from: June, 2017
   to: July, 2017
-  description: -Compared different Face Detection networks<br />
-               -Analyzed different datasets for Face Detection task<br />
+  description: -Compared different face detection algorithms<br />
+               -Analyzed different datasets for face detection task<br />
                -Tested different algorithms and presented to the team<br />
-               -Documented results and software
+               -Documented results and software<br />
