@@ -5,7 +5,7 @@ categories: [Posts, Python]
 tags: [python, pytorch, fiftyone, huggingface, dinov2]
 ---
 
-# FiftyOne Finetune DinoV2 with HuggingFace Transformers for ChestXray Dataset
+*You can access the tutorial as a Jupyter Notebook on [notebooks](https://github.com/sefaburakokcu/notebooks/blob/main/fiftyone_finutene_dinov2_with_huggingface_for_chestxray.ipynb).*
 
 In this tutorial, we will:
 
