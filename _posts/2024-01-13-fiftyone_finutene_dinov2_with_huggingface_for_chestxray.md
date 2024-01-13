@@ -1,13 +1,12 @@
 ---
-title: FiftyOne Finetune DinoV2 with HuggingFace Transformers for ChestXray Dataset
+title: FiftyOne Finetune DinoV2 for ChestXray Dataset
 date: 2024-01-13 21:15:00 +0300
 categories: [Posts, Python]
 tags: [python, pytorch, fiftyone, huggingface, dinov2]
 ---
 
-## Link to Jupyter Notebook
 
-*You can access the tutorial as a Jupyter Notebook on [notebooks](https://github.com/sefaburakokcu/notebooks/blob/main/fiftyone_finutene_dinov2_with_huggingface_for_chestxray.ipynb).*
+*You can access the tutorial as a Jupyter Notebook on [FiftyOne Finetune DinoV2 with HuggingFace Transformers for ChestXray Dataset](https://github.com/sefaburakokcu/notebooks/blob/main/fiftyone_finutene_dinov2_with_huggingface_for_chestxray.ipynb).*
 
 ## Introduction
 
@@ -111,7 +110,7 @@ example["image"]
     label: 1
 
     
-![png](../assets/blog/fiftyone_chestxray.png)
+![png](../assets/blog/fiftyone_chestxray_example.png)
     
 
 
@@ -407,6 +406,8 @@ for sample in fiftyone_test_dataset.iter_samples(autosave=True, progress=True):
 ```python
 session.view = fiftyone_test_dataset
 ```
+
+![png](../assets/blog/fiftyone_chestxray_preds_gt.png)
 
 
 ```python
