@@ -5,7 +5,11 @@ categories: [Posts, Python]
 tags: [python, pytorch, fiftyone, huggingface, dinov2]
 ---
 
+## Link to Jupyter Notebook
+
 *You can access the tutorial as a Jupyter Notebook on [notebooks](https://github.com/sefaburakokcu/notebooks/blob/main/fiftyone_finutene_dinov2_with_huggingface_for_chestxray.ipynb).*
+
+## Introduction
 
 In this tutorial, we will:
 
@@ -105,7 +109,6 @@ example["image"]
 ```
 
     label: 1
-
 
     
 ![png](../assets/blog/fiftyone_chestxray.png)
