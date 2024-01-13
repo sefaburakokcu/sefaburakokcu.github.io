@@ -5,9 +5,6 @@ categories: [Posts, Python]
 tags: [python, pytorch, fiftyone, huggingface, dinov2]
 ---
 
-
-*You can access the tutorial as a Jupyter Notebook on [FiftyOne Finetune DinoV2 with HuggingFace Transformers for ChestXray Dataset](https://github.com/sefaburakokcu/notebooks/blob/main/fiftyone_finutene_dinov2_with_huggingface_for_chestxray.ipynb).*
-
 ## Introduction
 
 In this tutorial, we will:
@@ -468,3 +465,8 @@ session.view = (
 ```python
 session.freeze()
 ```
+
+## Resources
+
+You can access the tutorial as a Jupyter Notebook on [FiftyOne Finetune DinoV2 with HuggingFace Transformers for ChestXray Dataset](https://github.com/sefaburakokcu/notebooks/blob/main/fiftyone_finutene_dinov2_with_huggingface_for_chestxray.ipynb).
+
