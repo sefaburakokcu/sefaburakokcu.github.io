@@ -107,7 +107,7 @@ example["image"]
     label: 1
 
     
-![png](../assets/blog/fiftyone_chestxray_example.png)
+![png](../assets/blog/fiftyone_chestxray_example.jpg)
     
 
 
