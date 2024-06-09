@@ -1,11 +1,19 @@
 [
   
     {
+      "title"    : "FiftyOne Finetune DinoV2 for ChestXray Dataset",
+      "category" : "",
+      "tags"     : "python, pytorch, fiftyone, huggingface, dinov2",
+      "url"      : "/blog/fiftyone_finutene_dinov2_with_huggingface_for_chestxray",
+      "date"     : "2024-01-13 18:15:00 +0000"
+    } ,
+  
+    {
       "title"    : "Optimization of Onnx Models for TensorRT Execution",
       "category" : "",
       "tags"     : "python, tensorrt, trtexec, onnx",
       "url"      : "/blog/optimization-of-onnx-models-for-trt-execution",
-      "date"     : "2022-10-30 14:20:00 +0300"
+      "date"     : "2022-10-30 11:20:00 +0000"
     } ,
   
     {
@@ -13,7 +21,7 @@
       "category" : "",
       "tags"     : "python",
       "url"      : "/blog/sending-emails-with-python",
-      "date"     : "2020-06-07 13:25:00 +0300"
+      "date"     : "2020-06-07 10:25:00 +0000"
     } 
   
 ]
